@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1">
+    <title>Loan Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+span {
+    color: red;
+}
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="tab-pane active" id="tab1">
+        <h3 class="block">Provide your personal details</h3>
+        <form id="myForm" onsubmit="return handleSubmit(event)">
+            <label class="control-label col-md-4">Title <span class="required"> *</span></label>
+            <br />
+            <select name="Title" id="" class="form-control input-circle" required>
+                <option value="">Select ...</option>
+                <option value="1">MR.</option>
+                <option value="2">MRS</option>
+                <option value="3">MISS</option>
+                <option value="4">CHIEF</option>
+                <option value="5">DR.</option>
+                <option value="6">PROF.</option>
+                <option value="7">SIR</option>
+                <option value="8">LADY</option>
+            </select> <br />
+
+            <label class="control-label col-md-4">First Name <span class="required"> *</span></label>
+            <div class="col-md-8">
+                <input type="text" name="FirstName" class="form-control input-circle" placeholder="First Name" value="" required>        <br />
+
+                <label class="control-label col-md-4">Middle Name</label>
+                <br />
+                <input type="text" name="MiddleName" class="form-control input-circle" placeholder="Middle Name" value="">
+                <br />
+                <label class="control-label col-md-4">Surname <span class="required"> *</span></label>
+                <div class="col-md-8">
+                    <input type="text" name="LastName" class="form-control input-circle" placeholder="Last Name">
+                    <br />
+
+                    <label class="control-label col-md-4">Date of Birth <span class="required"> *</span></label>
+                    <script>
+                        function getAge() {
+                            var dateString = document.getElementById("mydate").value;
+                            if (dateString != "") {
+                                var today = new Date();
+                                var birthDate = new Date(dateString);
+                                var age = today.getFullYear() - birthDate.getFullYear();
+                                var m = today.getMonth() - birthDate.getMonth();
+                                var da = today.getDate() - birthDate.getDate();
+                                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                                    age---;
+                                }
+                                if (m < 0) {
+                                    m += 12;
+                                }
+                                if (da < 0) {
+                                    da += 30;
+                                }
+
+                                if (age < 18 || age > 100) {
+                                    $msg = alert("You must be 18 and above");
+                                    exit();
+                                }
+                                /*else {
+alert("Age "+age+" is allowed");
+}
+} else {
+alert("please provide your date of birth");*/
+                            }
+                        }
+                    </script>
+
+                    <input name="BirthDate" type="date" class="form-control input-circle" id="mydate" data-lang="en" max="2008-12-31" data-format="YYYY-MM-DDTh:m:s" data-placeholder="Only 18 and above can apply for a loan" required aria-required="true" />
+                    <br />
+
+                    <label class="control-label col-md-4">Gender <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <select class="form-control input-circle" name="Gender" aria-required="true" aria-describedby="select-error" aria-invalid="true" required>
+                            <option value="">Select...</option>
+                            <option value="1">Male</option><option value="Female">Female</option>                                                                </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Email Address <span class="required"> *</span></label>
+                                <div class="col-md-8">
+                                    <input type="email" name="Email" class="form-control input-circle" aria-required="true" placeholder="Email Address" value="" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Phone Number <span class="required"> *</span> </label>
+                                    <div class="col-md-8">
+                                        <input type="number" name="PhoneNo" class="form-control input-circle" placeholder="Mobile Number" value="" onkeypress="return isNumberKey(evt);" required maxlength="11">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Marital Status <span class="required"> *</span></label>
+                            <div class="col-md-8">
+                                <select class="form-control input-circle" name="MaritalStatus" aria-required="true" aria-describedby="select-error" aria-invalid="true" required>
+
+                                    <option value="">Select...</option>
+
+                                    <option value="Single">Single</option><option value="Married">Married</option><option value="Divorced">Divorced</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label class="control-label col-md-4">Level Of Education <span class="required"> *</span></label>
+                                <div class="col-md-8">
+                                    <select name="EducationLevel" id="EducationLevel" class="form-control input-circle" required>
+                                        <option selected="selected" value=""></option>
+                                        <option value="No Education">No Education</option>
+                                        <option value="Secondary School">Secondary School</option>
+                                        <option value="College">College</option>
+                                        <option value="B.Sc">B.Sc</option>
+                                        <option value="Master's Degree">Master's Degree</option>
+
+                                    </select>
+                                </div>
+                                <br />
+                                <center><button type="submit">Next</button>
+                                </form>
+
+                                <script>
+                                    function handleSubmit(event) {
+                                        event.preventDefault(); // Prevent default form submission
+
+                                        const form = document.getElementById('myForm');
+                                        if (form.checkValidity()) {
+                                            window.location.href = 'address.html'; // Redirect if valid
+                                        } else {
+                                            form.reportValidity(); // Show native browser validation
+                                        }
+                                    }
+                                </script>
+
+                            </a>
+                        </div>
+                    </body>
+                </html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport"
+content="width=device-width, height=device-height, initial-
+scale=1">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>bankinfo</title>
+
+</head>
+<body>
+     <form id="myForm" onsubmit="return handleSubmit(event)">
+    <h3 class="block">Provide Account details</h3>
+
+   <label>Select Bank</label>
+    <select id="bank_select">
+      <option value="">Loading banks...</option>
+    </select>
+    
+    <label>Account Number</label>
+    <input type="text" id="account_number" maxlength="10" placeholder="Enter 10-digit account number" required>
+    <div id="account_name_display" class="account-name" style="color:green; background:;">
+    </div>
+  <script>
+    let balance = 200;
+    const PAYSTACK_SECRET_KEY = "Bearer sk_test_8a6dad939f8f446862abf65ec684953b3b02de44"; // Replace with actual Paystack secret key
+
+    const bankSelect = document.getElementById('bank_select');
+    const accountNumberInput = document.getElementById('account_number');
+    const accountNameDisplay = document.getElementById('account_name_display');
+    const msgBox = document.getElementById('messageBox');
+
+    async function fetchBanks() {
+      try {
+        const res = await fetch("https://api.paystack.co/bank?currency=NGN", {
+          headers: {
+            Authorization: PAYSTACK_SECRET_KEY
+          }
+        });
+        const data = await res.json();
+        if (data.status) {
+          bankSelect.innerHTML = '<option value="0">Select Bank</option>' + data.data.map(bank =>
+            `<option value="${bank.code}">${bank.name}</option>`
+          ).join('');
+        } else {
+          throw new Error("Failed to fetch banks");
+        }
+      } catch (error) {
+        bankSelect.innerHTML = `<option value="">Error loading banks</option>`;
+      }
+    }
+
+    fetchBanks();
+
+    accountNumberInput.addEventListener("input", async () => {
+      const accountNumber = accountNumberInput.value;
+      const bankCode = bankSelect.value;
+      accountNameDisplay.textContent = "";
+
+      if (accountNumber.length === 10 && bankCode) {
+        try {
+          const res = await fetch(`https://api.paystack.co/bank/resolve?account_number=${accountNumber}&bank_code=${bankCode}`, {
+            headers: {
+              Authorization: PAYSTACK_SECRET_KEY
+            }
+          });
+          const data = await res.json();
+          if (data.status) {
+            accountNameDisplay.textContent = data.data.account_name;
+            accountNameDisplay.className = "account-name success";
+          } else {
+            accountNameDisplay.textContent = "Account not found";
+            accountNameDisplay.className = "account-name error";
+          }
+        } catch (err) {
+          accountNameDisplay.textContent = "Error resolving account";
+          accountNameDisplay.className = "account-name error";
+        }
+      }
+    });
+
+    const updateBalance = (amount) => {
+      balance -= amount;
+      document.getElementById('balanceDisplay').innerText = `Balance: ₦${balance.toLocaleString()}.00`;
+    }
+
+    async function initiateTransfer() {
+      const bankCode = bankSelect.value;
+      const accountNumber = accountNumberInput.value;
+      const accountName = accountNameDisplay.textContent;
+      const amount = parseInt(document.getElementById('amount').value);
+      const narration = document.getElementById('narration').value;
+
+      if (!bankCode || !accountNumber || !amount || !narration || !accountName || accountName === "Account not found") {
+        msgBox.innerHTML = "Please fill all fields correctly.";
+        msgBox.className = "message error";
+        return;
+      }
+
+      if (amount > balance) {
+        msgBox.innerHTML = "Insufficient Balance";
+        msgBox.className = "message error";
+        return;
+      }
+
+      try {
+        // Create transfer recipient
+        const recipientRes = await fetch("https://api.paystack.co/transferrecipient", {
+          method: "POST",
+          headers: {
+            Authorization: PAYSTACK_SECRET_KEY,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            type: "nuban",
+            name: accountName,
+            account_number: accountNumber,
+            bank_code: bankCode,
+            currency: "NGN"
+          })
+        });
+
+        const recipientData = await recipientRes.json();
+        if (!recipientData.status) throw new Error("Recipient creation failed");
+
+        const recipientCode = recipientData.data.recipient_code;
+
+        // Initiate transfer
+        const transferRes = await fetch("https://api.paystack.co/transfer", {
+          method: "POST",
+          headers: {
+            Authorization: PAYSTACK_SECRET_KEY,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            source: "balance",
+            amount: amount * 100,
+            recipient: recipientCode,
+            reason: narration
+          })
+        });
+
+        const transferData = await transferRes.json();
+
+        if (transferData.status) {
+          updateBalance(amount);
+          msgBox.innerHTML = `Transfer to ${accountName} successful.`;
+          msgBox.className = "message success";
+        } else {
+          throw new Error(transferData.message || "Transfer failed");
+        }
+      } catch (error) {
+        msgBox.innerHTML = error.message;
+        msgBox.className = "message error";
+      }
+    }
+  </script>
+                    </div>
+
+
+<p style="text-align: center; color: #555; margin-top: 10px;">
+    <strong>Note:</strong> <i style="color:red;">
+Kindly provide your valid bank account information. This is the account we’ll credit once your loan is approved. Make sure the details are correct and belong to you to ensure a smooth and timely transfer..
+</p>
+                    </script>
+         <center><center><button type="submit">Next</button>
+</form>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const form = document.getElementById('myForm');
+    if (form.checkValidity()) {
+      window.location.href = 'payment.html'; // Redirect if valid
+    } else {
+      form.reportValidity(); // Show native browser validation
+    }
+  }
+</script>
+</div>   
+            
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        
+        span {
+            
+            color:red;
+        }
+    </style>
+
+            </div>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                }
+
+                .container {
+                    max-width: 800px;
+                    margin: 40px auto;
+                    padding: 20px;
+                    background-color: #fff;
+                    border: 1px solid #ddd;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+                h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                section {
+                    margin-bottom: 20px;
+                }
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                input[type="text"], input[type="number"], input[type="email"], input[type="button"], input[type="date"], select, textarea {
+                    width: 100%;
+                    height: 40px;
+                    margin-bottom: 20px;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                }
+
+                textarea {
+                    height: 100px;
+                    resize: vertical;
+                }
+
+                button[type="submit"] {
+                    width: 100%;
+                    height: 40px;
+                    background-color: #4CAF50;
+                    color: #fff;
+                    padding: 10px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                button[type="submit"]:hover {
+                    background-color: #3e8e41;
+                }
+
+                span {
+
+                    color: red;
+                }
+            </style>
+
+
+        </body>
+    </html>

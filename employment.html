@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+    content="width=device-width, height=device-height, initial-
+    scale=1">
+
+    <title>employment details</title>
+
+</head>
+<div class="tab-pane" id="tab3">
+    <h3 class="block">Provide your employment details</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <label class="control-label col-md-4">Employment Status <span class="required"> *</span></label>
+                <div class="col-md-8">
+                    <select name="EmploymentStatus" id="EmploymentStatus" class="form-control input-circle" required>
+                        <option selected="selected" value=""></option>
+                        <option value="Employed">Employed</option>
+                        <option value="Self-Employed">Self-Employed</option>
+                        <option value="Unemployed">Unemployed</option>
+                        <option value="Unemployed">Student</option>
+
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <label class="control-label col-md-4">Employment Sector <!--<span class="required"> *</span>--></label>
+                <div class="col-md-8">
+                    <select name="SectorCode" id="SectorCode" class="form-control input-circle">
+                        <option selected="selected" value=""></option>
+                        <option value="21">BANKING</option>
+                        <option value="11">FEDERAL AGENCIES</option>
+                        <option value="41">FMCG</option>
+                        <option value="13">LOCAL GOVT AGENCIES</option>
+                        <option value="22">NON-BANKING</option>
+                        <option value="31">OIL & GAS 1</option>
+                        <option value="73">PRINT MEDIA</option>
+                        <option value="72">RADIO MEDIA</option>
+                        <option value="12">STATE AGENCIES</option>
+                        <option value="51">TELE COMMS</option>
+                        <option value="5">TELECOMMUNICATIONS</option>
+                        <option value="71">TELEVISION MEDIA</option>
+                        <option value="42">OTHERS</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <b><sub style="color:red;">Note: students and unemployed should not fill this form only for salary earners</sub></b>
+
+    <div id="employed-fields">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" hidden="">
+                    <label class="control-label col-md-4">Current Employer <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="text" name="EmployerName" class="form-control input-circle" placeholder="Current Employer" value="" disabled="">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" hidden="">
+                    <label class="control-label col-md-4">Office Address <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="text" name="OfficeAddress" class="form-control input-circle" placeholder="Address Line 1" value="" required disabled="">
+                    </div>
+                </div>
+            </div>
+            <!--
+                                                                                                                                        <div class="col-md-6">
+                                                                                                                                            <div class="form-group">
+                                                                                                                                                <label class="control-label col-md-4">Office Department <span class="required"> *</span></label>
+                                                                                                                                                <div class="col-md-8">
+                                                                                                                                                    <input type="text" name="OfficeAddress" class="form-control input-circle" placeholder="Office Department" value="" required>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                        </div>
+                                                                                                                                        -->
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group" hidden="">
+                    <label class="control-label col-md-4">Net Monthly Income <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input minlength="4" type="number" name="MonthlyIncome" class="form-control input-circle" placeholder="Net Monthly Income" value="" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">PayDay <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input min="1" max="31" type="number" name="PayDay" class="form-control input-circle" placeholder="What day of the month are you paid?" value="" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Employed Date <span>*</span></label>
+                    <div class="col-md-8">
+                        <input type="date" name="EmployedDate" class="form-control input-circle date-picker" placeholder="Employment Date" data-years="1990-2023" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Office Email <span class="required"> optional</span> </label>
+                    <div class="col-md-8">
+                        <input type="email" name="OfficeEmail" class="form-control input-circle" placeholder="Office Email" value="" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Office Telephone Number <span class="required">optional </span></label>
+                    <div class="col-md-8">
+                        <input type="tel" name="OfficeTelephoneNo" class="form-control input-circle" placeholder="Office Telephone" value="" onkeypress="return isNumberKey(evt);" maxlength="11">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">StaffID Number <span>optional</span></label>
+                    <div class="col-md-8">
+                        <input type="text" name="StaffID" class="form-control input-circle" placeholder="StaffID No" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="selfemployed-fields" style="display: none">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Business Name <span class="required"> optional</span></label>
+                    <div class="col-md-8">
+                        <input type="text" name="BusinessName" class="form-control input-circle" placeholder="Business Name" value="">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Business Address <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="text" name="BusinessAddress" class="form-control input-circle" placeholder="Business Address Line 1" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Net Profit <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input minlength="4" type="number" name="BusinessMonthlyIncome" class="form-control input-circle" placeholder="Net Profit" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Daily Turnover <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="number" name="BusinessPayDay" class="form-control input-circle" placeholder="Daily earnings or income" value="" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Business Start Date <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="text" name="BusinessStartDate" class="form-control input-circle date-picker" placeholder="Business Start Date" data-years="1990-2023" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Business Email <span class="required"> *</span> </label>
+                    <div class="col-md-8">
+                        <input type="email" name="BusinessEmail" class="form-control input-circle" placeholder="Business Email" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Business Telephone NUmbers <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="tel" name="BusinessTelephoneNo" class="form-control input-circle" placeholder="Business Telephone" value="" onkeypress="return isNumberKey(evt);" maxlength="11" />
+                    </div>
+                </div>
+            </div>
+            <script>
+                function ShowHideDiv() {
+                    var chkYes = document.getElementById("chkYes");
+                    var dvtext = document.getElementById("dvtext");
+                    dvtext.style.display = chkYes.checked ? "block": "none";
+                }
+            </script>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label for="chkYes">
+                        <input type="radio" id="chkYes" name="chk" onclick="ShowHideDiv()" /> Yes
+                    </label>
+                    <label for="chkNo">
+                        <input type="radio" id="chkNo" name="chk" onclick="ShowHideDiv()" /> No
+                    </label>
+
+                    <label class="control-label col-md-4">Business Registered? <span class="required">*</span></label>
+                    <div class="col-md-8">
+                        <input id="dvtext" style="display: none" type="text" name="RCNo" class="form-control input-circle" id="dvtext" placeholder="Enter your RC Number" required value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" hidden="">
+        <div class="col-md-6">
+            <div class="form-group" hidden="">
+                <label class="control-label col-md-4">Tax Number <span></span></label>
+                <div class="col-md-8">
+                    <input type="text" name="TaxNo" class="form-control input-circle" placeholder="Tax No" value="0">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group" hidden="">
+                <label class="control-label col-md-4">Pension Number <span></span></label>
+                <div class="col-md-8">
+                    <input type="text" name="PensionNo" class="form-control input-circle" placeholder="Pension No" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <a href="loan-amount.html">
+        <button type="submit">Next page</button></a>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        
+        span {
+            
+            color:red;
+        }
+    </style>
+
+</body>
+</html>

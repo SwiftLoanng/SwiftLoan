@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"
+    content="width=device-width, height=device-height, initial-
+    scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>loan amount</title>
+
+</head>
+<body>
+     <form id="myForm" onsubmit="return handleSubmit(event)">
+    <div class="tab-pane" id="tab4">
+        <h3 class="block">How much loan do you want?</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label class="control-label col-md-4">How much money do you want? <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="text" name="loanamount" value="" id="loanamount" class="form-control input-circle" maxlength="6" placeholder="Loan Amount Requested" onBlur="calculateInstallment();" required="">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    <label class="control-label col-md-4">How long do you want it for?(Months) <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <select class="form-control input-circle" name="loanduration" id="loanduration" aria-required="true" aria-describedby="select-error" aria-invalid="true" onChange="calculateInstallment()" required>
+
+                            <option value="">Select...</option>
+
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Monthly Installments <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <input type="text" readonly name="monthlyinstallment" value="" id="monthlyinstallment" class="form-control input-circle" placeholder="0.00" required>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">Reason For Loan <span class="required"> *</span></label>
+                    <div class="col-md-8">
+                        <select class="form-control input-circle" name="PurposeKey" aria-required="true" aria-describedby="select-error" aria-invalid="true" required>
+
+                            <option value="">Select...</option>
+                            <option value="2">OTHERS</option>
+                            <option value="3">BUSINESS</option>
+                            <option value="4">Rent</option>
+                            <option value="5">School Fees</option>
+                            <option value="6">Medical Bills</option>
+                            <option value="7">Car Maintenance</option>
+                            <option value="8">Day to Day Expenses</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br><br>
+
+        <a href="bankinfo.html" hidden="">
+            <button type="back" class="button1">Next</button>
+
+</a>
+            <script>
+
+                function calculateInstallment() {
+
+                    var p = parseInt(document.getElementById("loanamount").value); //principal
+
+                    var t = parseInt(document.getElementById("loanduration").value); //time
+
+                    var m = 0.04; //managemnt fee
+
+                    var r = 0.04; //rate
+
+
+
+                    mi = (((p+(p*m))+((p+(p*m))*r*t)) / t);
+
+                    var monthlyinstallment = mi.toFixed(2);
+
+                    document.getElementById("monthlyinstallment").value = ""+ monthlyinstallment;
+
+                }
+
+
+
+            </script>
+         <center><center><button type="submit">Next</button>
+</form>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const form = document.getElementById('myForm');
+    if (form.checkValidity()) {
+      window.location.href = 'bankinfo.html'; // Redirect if valid
+    } else {
+      form.reportValidity(); // Show native browser validation
+    }
+  }
+</script>
+</div>   
+            
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        
+        span {
+            
+            color:red;
+        }
+    </style>
+
+        </body>
+    </html>

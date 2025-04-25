@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+content="width=device-width, height=device-height, initial-
+scale=1">
+    <title>emergency contact</title>
+    <hr />
+</head>
+<body>
+ <form id="myForm" onsubmit="return handleSubmit(event)">
+
+    <h3 class="block">Provide emergency contact details</h3>
+    <hr />
+    <div class="row">
+        <h4>emergency contact 1</h4>
+        <label class="control-label col-md-4">Relationship</label>
+        <div class="col-md-8">
+            <select name="kinRelationship" id="kinRelationship" class="form-control input-circle" required>
+                <option selected="selected" value="">select....</option>
+                <option value="Child">Child</option>
+                <option value="Father">Father</option>
+                <option value="Mother">Mother</option>
+                <option value="Brother">Brother</option>
+                <option value="Sister">Sister</option>
+                <option value="In-law">In-law</option>
+                <option value="Nephew">Nephew</option>
+                <option value="Niece">Niece</option>
+                <option value="Spouse">Spouse</option>
+
+            </select>
+        </div>
+        <label class="control-label col-md-4">Title <span class="required"> *</span></label>
+        <div class="col-md-8">
+            <select name="KinTitle" id="" class="form-control input-circle" required>
+                <option>Select ...</option>
+                <option value="1">MR.</option>
+                <option value="2">MRS</option>
+                <option value="3">MISS</option>
+                <option value="4">CHIEF</option>
+                <option value="5">DR.</option>
+                <option value="6">PROF.</option>
+                <option value="7">SIR</option>
+                <option value="8">LADY</option>
+            </select>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+
+        <label class="control-label col-md-4">Name <span class="required"> *</span></label>
+        <div class="col-md-8">
+            <input type="text" name="KinName" class="form-control input-circle" placeholder="full Name" value="" required>
+        </div>
+
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+<label class="control-label col-md-4">Address <span class="required"> *</span></label>
+<div class="col-md-8">
+<input type="text" name="kinAddress" class="form-control input-circle" placeholder="Address" value="" required>
+</div>
+</div>
+
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label class="control-label col-md-4">Phone Number <span class="required"> *</span></label>
+<div class="col-md-8">
+<input type="text" name="KinPhoneNo" class="form-control input-circle" placeholder="Phone Number" value="" onkeypress="return isNumberKey(evt);" maxlength="11" required>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+</div>
+</div>
+<div class="row">
+<h4>emergency contact 2 <br /> <br />
+<label class="control-label col-md-4">Relationship</label>
+<div class="col-md-8">
+<select name="kinRelationship" id="kinRelationship" class="form-control input-circle" required>
+<option selected="selected" value="">select....</option>
+<option value="Child">Child</option>
+<option value="Father">Father</option>
+<option value="Mother">Mother</option>
+<option value="Brother">Brother</option>
+<option value="Sister">Sister</option>
+<option value="In-law">friend</option>
+<option value="Nephew">Nephew</option>
+<option value="Niece">Niece</option>
+<option value="Spouse">Spouse</option>
+
+</select>
+</div>
+<label class="control-label col-md-4">Title <span class="required"> *</span></label>
+<div class="col-md-8">
+<select name="KinTitle" id="" class="form-control input-circle" required>
+<option>Select ...</option>
+<option value="1">MR.</option>
+<option value="2">MRS</option>
+<option value="3">MISS</option>
+<option value="4">CHIEF</option>
+<option value="5">DR.</option>
+<option value="6">PROF.</option>
+<option value="7">SIR</option>
+<option value="8">LADY</option>
+</select>
+</div>
+<label class="control-label col-md-4">Name <span class="required"> *</span></label>
+<div class="col-md-8">
+<input type="text" name="KinName" class="form-control input-circle" placeholder="full Name" value="" required>
+</div>
+<label class="control-label col-md-4">Address <span class="required"> *</span></label>
+<div class="col-md-8">
+<input type="text" name="kinAddress" class="form-control input-circle" placeholder="Address" value="" required>
+</div>
+<label class="control-label col-md-4">Phone Number <span class="required"> *</span></label>
+<div class="col-md-8">
+<input type="text" name="KinPhoneNo" class="form-control input-circle" placeholder="Phone Number" value="" onkeypress="return isNumberKey(evt);" maxlength="11" required>
+</div>
+</div>
+<center><center><button type="submit">Next</button>
+</form>
+
+<script>
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const form = document.getElementById('myForm');
+    if (form.checkValidity()) {
+      window.location.href = 'employment.html'; // Redirect if valid
+    } else {
+      form.reportValidity(); // Show native browser validation
+    }
+  }
+</script>
+</div>
+</div>
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        
+        span {
+            
+            color:red;
+        }
+    </style>
+</body>
+</html>

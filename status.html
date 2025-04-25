@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loan Status</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .status-card {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    .status-icon {
+      font-size: 50px;
+      color: #ff9800;
+      animation: pulse 2s infinite;
+    }
+    .status-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 15px 0 10px;
+    }
+    .status-message {
+      font-size: 14px;
+      color: #666;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="status-card">
+    <div class="status-icon">⏳</div>
+    <div class="status-title">Pending Transaction</div>
+    <div class="status-message">Your loan is currently under verification. Please Activate your Account and check  back!.</div>
+  </div>
+
+  <script>
+    // You can customize this section for status updates via backend later
+    console.log("Transaction status: Pending - Under Verification");
+  </script>
+</body>
+</html>

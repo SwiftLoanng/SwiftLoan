@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SwiftLoan - Fast & Easy Loans</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #ffc107;
+      color: #000;
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e0a800;
+    }
+
+    .testimonials {
+      background: white;
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
+
+    .testimonials h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      color: #007bff;
+    }
+
+    .testimonial-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .testimonial {
+      background: #f1f1f1;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .testimonial p {
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+
+    .testimonial .name {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ddd;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to SwiftLoan</h1>
+
+<body>
+  <div class="loan-container">
+    <div class="loan-title">Welcome to Our Fast & Reliable Loan Platform</div>
+    <div class="loan-description">
+      We’re here to make access to funds easy and stress-free. Our loan services are specially designed for 
+      <span class="highlight">students</span> and <span class="highlight">civil servants</span>, giving you the financial freedom you need when you need it most.
+      <br><br>
+      No BVN? No ID? <span class="highlight">No problem!</span><br>
+      With just your <span class="highlight">personal phone number</span> and a <span class="highlight">trusted security contact</span>, you can apply and get approved—fast.
+      <br><br>
+      <span class="highlight">No long queues, no unnecessary paperwork.</span> Just a quick, secure, and straightforward process designed to support your goals.
+    </div>
+<br />
+    <button class="btn" onclick="getStarted()">Get Started</button>
+  </header>
+
+  <section class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+
+        <div class="container"> <img src="https://blog.openreplay.com/authors/avatars/chioma-uche-nwosu.jpg" alt="Avatar" style="width:90px">
+    <p><span>Chioma Nwosu</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">“I applied as a student and got approved the same day. No stress, no BVN needed!”</p>
+  </div>
+
+  <div class="container"> <img src="https://media.licdn.com/dms/image/v2/D4D03AQEhXarKjgc0TQ/profile-displayphoto-shrink_400_400/B4DZYv16s_HwAg-/0/1744559386068?e=2147483647&v=beta&t=TS14AAqr43SDRpHflcNISOfQl0EEjRnDIYquJ4EXarM" alt="Avatar" style="width:90px">
+    <p><span>Emmanuel Thomas</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">“Best loan site in Nigeria. I got the loan without any stress."</p>
+  </div>
+    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIgj4JzRH_FDntsUfbL108CwJZZqA37J2MtQaV3tWtcUCHmZ_4XqGOw10&s=10" alt="Avatar" style="width:90px">
+    <p><span>Musa Ibrahim</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">“The process was super easy. Just my phone number and a security contact – that’s all!”</p>
+  </div>
+    <div class="container"> <img src="https://www.londontheatrereviews.co.uk/shared/images/content/bus_53226/blog/quuenof.webp" alt="Avatar" style="width:90px">
+    <p><span>joy Adewale</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"I didn’t think I’d get a loan without an ID, but they really came through!"
+</p>
+  </div>
+    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ziFCkopvGiQdu5wX8Mq8RWLfjoF14PhGtQgfY2KIgRoM3YCWUJ3VASmi&s=10" alt="Avatar" style="width:90px">
+    <p><span>Chidimma Okeke</span>  <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"Perfect for civil servants like me. Fast approval and zero paperwork."</p>
+  </div>
+    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRHYcOwuPSMgOBy0FKUywya_LVE77Yqc-EPGyR4U7paJOxsy07EiyyFwxz&s=10" alt="Avatar" style="width:90px">
+    <p><span>Andrew David</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"SwiftLoan helped me with emergency funds in less than 24 hours, Highly recommend! I was surprised how fast and smooth the whole thing was. Highly recommended!"</p>
+  </div>
+    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_TdTZbOtdmq4tLtLNGVPmCexcQU6jvntEuTmbjhRkvgg8hWw_SghFiAc&s=10" alt="Avatar" style="width:90px">
+    <p><span>Sani Adamu</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"Even without a BVN, I still got the help I needed. Super reliable!"</p>
+  </div>
+    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBz_9KKs8aw_LaBPzgtxbcPSHy9-_Xh7NX0CNfPKJsbsBVVfdMhmTtC8k&s=10" alt="Avatar" style="width:90px">
+    <p><span>Grace John</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"Real people helping real people. I love how simple and straightforward it is."
+</p>
+  </div>
+    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSqZ3HwZrzcb41gcWwPrIoUjjOpfkyuzjKHTeaCV6duGWPgpp_nRBXJ8o&s=10" alt="Avatar" style="width:90px">
+    <p><span>Faith Haruna</span> <sub style="color:red;">Applicant's.</sub> </p>
+    </p>
+    <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"This platform is a life-saver for students. I got my loan right when I needed it."
+</p>
+  </div>
+  <p style=color:;>The above comment are made for users </p>
+  <p style=color:;>who applied for the loan. </p>
+    </div>
+  <p style=color:gold ;>This are testimonies of people how have receive their Loan.</p>
+
+        
+  </section>
+
+  <footer>
+    &copy; 2025 SwiftLoan. All rights reserved.
+  </footer>
+
+  <script>
+    function getStarted() {
+      alert("Redirecting to the loan application page...");
+      // Replace with actual link when ready:
+      window.location.href = "personal.html";
+    }
+  </script>
+
+  <style>
+    .container {
+      border: 2px solid #ccc;
+      background-color: #eee;
+      border-radius: 5px;
+      padding: 16px;
+      margin: 16px 0
+    }
+
+    body {
+      border: 2px solid #ccc;
+      background-color: black;
+      border-radius: 5px;
+      padding: 16px;
+
+      margin: 16px 0 .container::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      .container img {
+        float: left;
+        margin-right: 20px;
+        border-radius: 50%;
+      }
+
+      .container span {
+        font-size: 20px;
+        margin-right: 15px;
+      }
+
+      @media (max-width: 500px) {
+        .container {
+          text-align: center;
+        }
+
+        .container img {
+          margin: auto;
+          float: none;
+          display: block;
+        }
+      }
+  </style>
+</body>
+</html>
