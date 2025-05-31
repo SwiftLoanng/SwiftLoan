@@ -19,7 +19,8 @@
 
                     <label class="control-label col-md-4">How much money do you want? <span class="required"> *</span></label>
                     <div class="col-md-8">
-                        <input type="text" name="loanamount" value="" id="loanamount" class="form-control input-circle" maxlength="6" placeholder="Loan Amount Requested" onBlur="calculateInstallment();" required="">
+                        <input type="number" min="10000" max="500000" name="loanamount" value="" id="loanamount" class="form-control input-circle" maxlength="6" placeholder="Loan Amount Requested ₦10,000 - ₦500,000" onBlur="calculateInstallment();" required="" >
+                        
                     </div>
 
                 </div>
@@ -181,4 +182,4 @@
     </style>
 
         </body>
-    </html>
+         </html>
