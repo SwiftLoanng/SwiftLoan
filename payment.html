@@ -88,7 +88,7 @@
         <div id="paypalDetails" class="payment-details">
             <strong>   <p style="color:;">
                 Bank Name: 9Payment Service Bank (9PSB) <br />Account Number: 5325366271 <br />
-                Account Name:EBILL TECH LTD</strong>
+                Account Name: EBILL TECH LTD</strong>
             </p>
         </div>
 
@@ -109,7 +109,7 @@
 </p>
     </div>
 <a href="status.html">check Loan status</a>
-    <script>
+<script>
         // Countdown Timer
         let timeInSeconds = 30 * 60;
         const countdownElement = document.getElementById("countdown");
@@ -134,7 +134,9 @@
 
         // Payment method logic
         const paymentSelect = document.getElementById("paymentMethod");
-        const paypalDetails = document.getElementById("paypalD hidocument.getElementById("bitcoinDetails");
+        const paypalDetails = document.getElementById("paypalDetails");
+        const cashappDetails = document.getElementById("cashappDetails");
+        const bitcoinDetails = document.getElementById("bitcoinDetails");
 
         paymentSelect.addEventListener("change", function () {
             paypalDetails.style.display = "none";
